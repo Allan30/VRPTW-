@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using VRPTW.AbstractObjects;
 
@@ -35,8 +36,12 @@ namespace VRPTW.Concret
 
         public void GenerateRandomSolution()
         {
+            var values = Enumerable.Range(0, Clients.Count).Select(x => x).ToList();
+            var rand = new Random();
+            var shuffled = values.OrderBy(_ => rand.Next()).ToList();
+            
             var currentVehicle = new Vehicle(Vehicles.Count, Capacity, Depot);
-            foreach (var client in Clients)
+            foreach (var client in values.Select(index => Clients[index]))
             {
                 if (!currentVehicle.AddClient(client))
                 {
