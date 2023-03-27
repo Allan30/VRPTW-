@@ -8,14 +8,27 @@ namespace VRPTW.Concret
     public class Vehicle
     {
         public int Id;
-        public int Capacity = 100;
+        public int Capacity;
         public LinkedList<Client> Clients;
         
-        public Vehicle(int id, Client depot)
+        public Vehicle(int id, int capacity, Client depot)
         {
             Id = id;
+            Capacity = capacity;
             Clients = new LinkedList<Client>();
             Clients.AddFirst(depot);
+            Clients.AddLast(depot);
+        }
+        
+        public bool AddClient(Client client)
+        {
+            if (client.Demand > Capacity)
+            {
+                return false;
+            }
+            Clients.AddBefore(Clients.Last, client);
+            Capacity -= client.Demand;
+            return true;
         }
         
         public int GetTravelledDistance()
@@ -28,12 +41,10 @@ namespace VRPTW.Concret
                 sum += client.Coordinate.GetDistance(currentPoint);
                 currentPoint = client.Coordinate;
             }
-            sum += Clients.First.Value.Coordinate.GetDistance(currentPoint);
             return sum;
             */
-            var sum = Clients.Zip(Clients.Skip(1), (prevClient, nextClient) => prevClient.Coordinate.GetDistance(nextClient.Coordinate)).Sum();
-            sum += Clients.Last.Value.Coordinate.GetDistance(Clients.First.Value.Coordinate);
-            return sum;
+            return Clients.Zip(Clients.Skip(1), (prevClient, nextClient) => prevClient.Coordinate.GetDistance(nextClient.Coordinate)).Sum();
+
         }
         
     }

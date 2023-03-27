@@ -7,6 +7,8 @@ namespace VRPTW.AbstractObjects
         
         float GetFitness();
         List<ISolution> GetNeighbours();
+        
+        void GenerateRandomSolution();
 
     }
 }

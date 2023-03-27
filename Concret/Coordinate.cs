@@ -4,8 +4,8 @@ namespace VRPTW.Concret
 {
     public class Coordinate
     {
-        private int X { get; set; }
-        private int Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         
         public Coordinate(int x, int y)
         {
