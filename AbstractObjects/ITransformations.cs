@@ -4,14 +4,16 @@ namespace VRPTW.AbstractObjects
 {
     public interface ITransformations
     {
-        void TwoOpt(LinkedList<IElement> element);
-        void RelocateIntra(LinkedList<IElement> element);
-        void Exchange(LinkedList<IElement> element);
-        void Reverse(LinkedList<IElement> element);
+        void TwoOpt(LinkedList<IElement> graph, IElement node1, IElement node2);
+        void RelocateIntra(LinkedList<IElement> graph, IElement node, IElement prevNode, IElement nextNode);
+        void Reverse(LinkedList<IElement> graph);
+        void ExchangeIntra(LinkedList<IElement> graph, IElement node1, IElement node2);
+
+        void CrossExchange(LinkedList<IElement> graph1, LinkedList<IElement> graph2, (IElement first , IElement last) nodes1, (IElement first , IElement last) nodes2);
+        void ExchangeInter(LinkedList<IElement> graph1, LinkedList<IElement> graph2, IElement node1, IElement node2);
+        void RelocateInter(LinkedList<IElement> graph1, LinkedList<IElement> graph2, IElement node, IElement prevNode, IElement nextNode);
         
-        void RelocateInter(LinkedList<IElement> element1, LinkedList<IElement> element2);
-        void Cross(LinkedList<IElement> element1, LinkedList<IElement> element2);
-        void CrossExchange(LinkedList<IElement> element1, LinkedList<IElement> element2);
+        
         
     }
 }

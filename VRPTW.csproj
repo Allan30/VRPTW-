@@ -46,6 +46,7 @@
         <Compile Include="Concret\Client.cs" />
         <Compile Include="Concret\Coordinate.cs" />
         <Compile Include="Concret\Routes.cs" />
+        <Compile Include="Concret\Transformations.cs" />
         <Compile Include="Concret\Vehicle.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

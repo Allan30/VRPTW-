@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace VRPTW.Concret
@@ -45,7 +43,7 @@ namespace VRPTW.Concret
             */
             return Clients.Zip(Clients.Skip(1), (prevClient, nextClient) => prevClient.Coordinate.GetDistance(nextClient.Coordinate)).Sum();
 
-        }
-        
+    }
+
     }
 }
